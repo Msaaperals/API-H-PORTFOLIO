@@ -51,7 +51,7 @@ export const metadata: Metadata = {
   authors: [{ name: "Hina Mushtaq" }],
   generator: "v0.app",
   verification: {
-    google: "V9TiFMNsYHVgJEMEByCDCmQUSkB2euprORSuEmrGerY",
+    google: "iGqAcQ8xIOqn6MlWwPv7tnn0I9nCZQCDZv0Jgn-O064",
   },
   icons: {
     icon: [
