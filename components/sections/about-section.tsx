@@ -34,7 +34,7 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about"
-      className="py-20 md:py-32 px-6 relative overflow-hidden"
+      className="py-12 md:py-32 px-4 md:px-6 relative overflow-hidden"
     >
       {/* Background with subtle particles/grain */}
       <div className="absolute inset-0 bg-[#0a0a0a]">
@@ -65,11 +65,11 @@ export function AboutSection() {
               variants={itemVariants}
               className="relative mb-2 group w-fit cursor-default"
             >
-              <h2 className="text-6xl md:text-8xl font-black tracking-tighter text-muted-foreground/20 absolute inset-0 select-none" aria-hidden="true">
+              <h2 className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter text-muted-foreground/20 absolute inset-0 select-none" aria-hidden="true">
                 About Me
               </h2>
               <motion.h2
-                className="text-6xl md:text-8xl font-black tracking-tighter relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground hover:from-emerald-400 hover:to-green-600 transition-all duration-500"
+                className="text-4xl sm:text-6xl md:text-8xl font-black tracking-tighter relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-muted-foreground hover:from-emerald-400 hover:to-green-600 transition-all duration-500"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
@@ -96,7 +96,7 @@ export function AboutSection() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <h3 className="text-3xl md:text-4xl font-bold mt-4 leading-tight">
+              <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mt-4 leading-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-emerald-200 to-emerald-400">
                   Environmental Specialist
                 </span>{" "}
@@ -105,7 +105,7 @@ export function AboutSection() {
               </h3>
             </motion.div>
 
-            <motion.p variants={itemVariants} className="text-lg text-zinc-200 leading-relaxed max-w-xl shadow-black drop-shadow-sm">
+            <motion.p variants={itemVariants} className="text-base md:text-lg text-zinc-200 leading-relaxed max-w-xl shadow-black drop-shadow-sm">
               A dedicated graduate with a Bachelor's in Environmental Sciences, aiming to leverage my academic background and practical experience to contribute effectively in a professional setting. Seeking a role that offers opportunities for growth and learning, particularly in teaching and management.
             </motion.p>
 

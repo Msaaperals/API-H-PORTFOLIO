@@ -223,6 +223,7 @@ export function FallingLeaves({
             ref={containerRef}
             className="absolute inset-0 overflow-hidden pointer-events-none select-none"
             style={{ opacity }}
+            suppressHydrationWarning
         />
     );
 }
