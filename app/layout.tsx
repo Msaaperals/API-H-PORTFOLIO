@@ -21,15 +21,38 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Hina Mushtaq - Environmental Sciences professional combining scientific research with creative design solutions for a sustainable future.",
   keywords: [
+    "Hina",
+    "Mushtaq",
+    "Hina Mushtaq",
+    "Hina Mushtaq Portfolio",
     "environmental science",
+    "environmental scientist",
     "sustainability",
+    "safety environment",
     "creative design",
     "UI/UX",
     "graphic design",
     "ecology",
+    "GIS specialist",
+    "hina",
+    "mushtaq",
+    "hi",
+    "science",
+    "sciences",
+    "environment",
+    "envoirnment",
+    "envoirnmental scientist",
+    "safety envoirnment",
+    "environmental",
+    "creative",
+    "designer",
+    "portfolio",
   ],
   authors: [{ name: "Hina Mushtaq" }],
   generator: "v0.app",
+  verification: {
+    google: "V9TiFMNsYHVgJEMEByCDCmQUSkB2euprORSuEmrGerY",
+  },
   icons: {
     icon: [
       {
