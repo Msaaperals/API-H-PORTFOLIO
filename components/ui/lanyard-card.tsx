@@ -269,9 +269,9 @@ export function LanyardCard() {
       ref={containerRef}
       initial={{ y: -200, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-      className="relative w-full h-[600px] md:h-[800px] flex justify-center -mt-12 md:-mt-20 overflow-visible"
+      className="relative w-full h-[450px] md:h-[800px] flex justify-center -mt-12 md:-mt-20 overflow-visible"
     >
       {/* Canvas for Rope */}
       <canvas ref={canvasRef} className="absolute inset-0 z-20 pointer-events-none" />

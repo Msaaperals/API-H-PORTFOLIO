@@ -8,7 +8,7 @@ import { FallingLeaves } from "@/components/ui/falling-leaves";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: false, amount: 0.3, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.1, margin: "0px 0px -50px 0px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
