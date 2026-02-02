@@ -352,7 +352,8 @@ export function LanyardCard() {
                 <img
                   src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://wa.me/923086221771?text=Hello!%20I%20have%20seen%20your%20portfolio.%20I%20want%20to%20talk%20about%20a%20project.&ecc=L&margin=1"
                   alt="WhatsApp QR Code"
-                  className="w-full h-full"
+                  className="w-full h-full object-contain"
+                  loading="lazy"
                 />
               </div>
               <div className="text-center">
