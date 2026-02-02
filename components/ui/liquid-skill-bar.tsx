@@ -43,8 +43,8 @@ export function LiquidSkillBar({
       {
         width: `${level}%`,
         opacity: 1,
-        duration: 1.8,
-        ease: "power3.inOut", // More premium in-out curve
+        duration: 3.2,
+        ease: "power4.inOut", // More premium and smoother in-out curve
       },
       0 // Start at 0 relative to timeline
     );
@@ -54,8 +54,8 @@ export function LiquidSkillBar({
       { value: 0 },
       {
         value: level,
-        duration: 1.8,
-        ease: "power3.inOut",
+        duration: 3.2,
+        ease: "power4.inOut",
         onUpdate: function () {
           setDisplayPercent(Math.round(this.targets()[0].value));
         },
@@ -125,7 +125,7 @@ export function LiquidSkillBar({
                 rgba(255, 255, 255, 0.1) 10px,
                 rgba(255, 255, 255, 0.1) 20px
               )`,
-              animation: "shimmer 2s linear infinite",
+              animation: "shimmer 4s linear infinite",
             }}
           />
 

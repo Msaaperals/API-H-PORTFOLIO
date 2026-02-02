@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Shield, Leaf, Palette, QrCode } from "lucide-react";
 
 export function LanyardCard() {
@@ -9,7 +10,8 @@ export function LanyardCard() {
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [cardState, setCardState] = useState({ x: 0, y: 0, rotation: 0 });
+  // Remove state and use useRef for direct style manipulation
+  const cardTransformRef = useRef({ x: 0, y: 0, rotation: 0 });
 
   // Physics constraints
   const GRAVITY = 0.6; // Slightly higher gravity for stability
@@ -236,11 +238,14 @@ export function LanyardCard() {
       const rotRad = Math.atan2(dx, dy);
       const rotDeg = rotRad * (180 / Math.PI) * -1; // Invert to match CSS transform
 
-      setCardState({
-        x: last.x,
-        y: last.y, // The card 'hole' will be at this Y
-        rotation: rotDeg
-      });
+      // Direct DOM manipulation for maximum performance
+      if (cardRef.current) {
+        cardRef.current.style.transform = `
+            translate3d(${last.x}px, ${last.y}px, 0)
+            translate(-50%, 15px)
+            rotate(${-rotDeg}deg)
+        `;
+      }
 
       rafId = requestAnimationFrame(animate);
     };
@@ -274,16 +279,9 @@ export function LanyardCard() {
       {/* Card DOM Element */}
       <div
         ref={cardRef}
-        className={`absolute top-0 left-0 z-10 will-change-transform origin-top ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+        className={`absolute top-0 left-0 z-10 will-change-transform origin-top gpu-accelerated ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
         style={{
-          transform: `
-                    translate3d(${cardState.x}px, ${cardState.y}px, 0) 
-                    translate(-50%, 15px)                     
-                    rotate(${-cardState.rotation}deg)
-                `,
-          // translate(-50%, 0) centers the card horizontally on the rope point
-          // The '15px' Y offset pushes the card DOWN slightly so the rope hook 
-          // appears to go INTO the card hole, rather than overlapping weirdly.
+          transform: `translate3d(0px, 0px, 0) translate(-50%, 15px) rotate(0deg)`,
         }}
       >
         {/* CARD */}
@@ -328,9 +326,11 @@ export function LanyardCard() {
             {/* Avatar */}
             <div className="relative w-16 h-16 md:w-24 md:h-24 mb-3 md:mb-4">
               <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl animate-pulse" />
-              <img
+              <Image
                 src="/avatar.jpg"
-                alt="Hina Mushtaq"
+                alt="Miss Hina"
+                width={96}
+                height={96}
                 className="w-full h-full rounded-full object-cover border-4 border-[#1a1c23] shadow-lg relative z-10"
                 draggable={false}
               />
@@ -338,7 +338,7 @@ export function LanyardCard() {
             </div>
 
             {/* Text */}
-            <h2 className="text-lg md:text-2xl font-bold text-white mb-0.5 tracking-tight">Hina Mushtaq</h2>
+            <h2 className="text-lg md:text-2xl font-bold text-white mb-0.5 tracking-tight">Miss Hina</h2>
             <p className="text-[9px] md:text-xs font-medium text-emerald-400 mb-4 tracking-wide uppercase">Environmental Specialist & Digital Designer</p>
 
             {/* WhatsApp QR Code - Compact & Focused */}

@@ -1,16 +1,27 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function MouseFollower() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
+  const springX = useSpring(mouseX, springConfig);
+  const springY = useSpring(mouseY, springConfig);
+
+  const dotSpringConfig = { stiffness: 500, damping: 28 };
+  const dotSpringX = useSpring(mouseX, dotSpringConfig);
+  const dotSpringY = useSpring(mouseY, dotSpringConfig);
+
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-      setIsVisible(true);
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+      if (!isVisible) setIsVisible(true);
     };
 
     const handleMouseLeave = () => {
@@ -24,7 +35,7 @@ export function MouseFollower() {
       window.removeEventListener("mousemove", handleMouseMove);
       document.body.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, []);
+  }, [isVisible]);
 
   // Hide on mobile/touch devices
   if (typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches) {
@@ -36,16 +47,12 @@ export function MouseFollower() {
       {/* Main cursor glow */}
       <motion.div
         className="fixed pointer-events-none z-[9999] mix-blend-screen"
-        animate={{
-          x: mousePosition.x - 150,
-          y: mousePosition.y - 150,
+        style={{
+          x: springX,
+          y: springY,
+          translateX: "-50%",
+          translateY: "-50%",
           opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
         }}
       >
         <div className="w-[300px] h-[300px] rounded-full bg-gradient-radial from-primary/20 via-primary/5 to-transparent blur-2xl" />
@@ -54,15 +61,12 @@ export function MouseFollower() {
       {/* Small dot follower */}
       <motion.div
         className="fixed pointer-events-none z-[9999]"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
+        style={{
+          x: dotSpringX,
+          y: dotSpringY,
+          translateX: "-50%",
+          translateY: "-50%",
           opacity: isVisible ? 1 : 0,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
         }}
       >
         <div className="w-2 h-2 rounded-full bg-primary" />

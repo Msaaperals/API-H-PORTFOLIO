@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, useMotionValue, useTransform, useSpring } from "framer-motion";
+import Image from "next/image";
 
 export function IDCard() {
   const [isFlipped, setIsFlipped] = useState(false);
@@ -66,9 +67,11 @@ export function IDCard() {
               {/* Avatar - Floating partially over top area */}
               <div className="absolute -top-12 left-1/2 -translate-x-1/2">
                 <div className="relative w-24 h-24 rounded-full p-1 bg-card shadow-lg ring-1 ring-white/20">
-                  <img
+                  <Image
                     src="/avatar.jpg"
                     alt="Hina Mushtaq"
+                    width={96}
+                    height={96}
                     className="w-full h-full rounded-full object-cover"
                   />
                 </div>

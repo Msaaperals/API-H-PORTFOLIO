@@ -234,7 +234,8 @@ export function ParticleBackground() {
     <div className="fixed inset-0 -z-10 pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 75 }}
-        gl={{ alpha: true, antialias: true, powerPreference: "high-performance" }}
+        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+        dpr={[1, 1.5]} // Cap DPR for better performance on high-res screens
         style={{ background: "transparent", pointerEvents: "none" }}
       >
         <ambientLight intensity={0.3} />

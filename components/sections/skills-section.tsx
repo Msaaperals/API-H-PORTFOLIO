@@ -203,7 +203,7 @@ export function SkillsSection() {
               name={skill.name}
               level={skill.level}
               icon={icons[skill.icon]}
-              delay={index * 0.1}
+              delay={index * 0.15}
               isVisible={isVisible}
             />
           ))}

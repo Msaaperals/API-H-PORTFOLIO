@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Heart, ArrowUpRight } from "lucide-react";
+import { MetallicQR } from "@/components/ui/metallic-qr";
 
 // Register safely
 if (typeof window !== "undefined") {
@@ -61,21 +62,25 @@ export function Footer() {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-24 mb-20">
 
-                    {/* Brand Column */}
-                    <div className="lg:col-span-2 footer-item space-y-6">
-                        <div className="space-y-4">
-                            <h2 className="text-3xl font-bold tracking-tight text-foreground">Hina Mushtaq</h2>
-                            <p className="text-muted-foreground max-w-sm leading-relaxed">
-                                Crafting digital experiences that merge environmental science with creative design.
-                                Let's build a sustainable future together.
-                            </p>
-                        </div>
+                    {/* Brand Column & QR */}
+                    <div className="lg:col-span-2 footer-item flex flex-col sm:flex-row items-start gap-8 lg:gap-12">
+                        <div className="space-y-6 flex-1">
+                            <div className="space-y-4">
+                                <h2 className="text-3xl font-bold tracking-tight text-foreground">Hina Mushtaq</h2>
+                                <p className="text-muted-foreground max-w-sm leading-relaxed">
+                                    Crafting digital experiences that merge environmental science with creative design.
+                                    Let's build a sustainable future together.
+                                </p>
+                            </div>
 
-                        <div className="flex gap-4">
-                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hinatabbasum50@gmail.com&su=I%20want%20to%20connect&body=Hello%20Hina,%0A%0AI%20want%20to%20connect%20or%20talk%20to%20you.%20Welcome%20message!" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2 text-sm font-medium" target="_blank" rel="noopener noreferrer">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hinatabbasum50@gmail.com&su=I%20want%20to%20connect&body=Hello%20Hina,%0A%0AI%20want%20to%20connect%20or%20talk%20to%20you.%20Welcome%20message!" className="px-6 py-3 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all flex items-center gap-2 text-sm font-medium w-fit" target="_blank" rel="noopener noreferrer">
                                 <Mail className="w-4 h-4" />
                                 hinatabbasum50@gmail.com
                             </a>
+                        </div>
+
+                        <div className="flex-shrink-0 pt-2">
+                            <MetallicQR />
                         </div>
                     </div>
 

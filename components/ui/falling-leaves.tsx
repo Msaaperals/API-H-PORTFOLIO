@@ -64,7 +64,7 @@ export function FallingLeaves({
 
         const spawn = (isSparkle: boolean, side: 'left' | 'right' | 'random' = 'random') => {
             const el = document.createElement("div");
-            el.className = "absolute pointer-events-none z-0";
+            el.className = "absolute pointer-events-none z-0 gpu-accelerated will-change-transform";
 
             let size;
             if (isSparkle) {
@@ -176,18 +176,11 @@ export function FallingLeaves({
                     item.vx += dx * force * 0.01;
                     item.vy += dy * force * 0.01;
 
-                    // Highlight effect
-                    gsap.to(item.el, {
-                        scale: item.baseScale * (1 + force * 0.3),
-                        duration: 0.2,
-                        overwrite: "auto"
-                    });
+                    // Faster direct manipulation instead of gsap.to
+                    const targetScale = item.baseScale * (1 + force * 0.3);
+                    gsap.set(item.el, { scale: targetScale, overwrite: "auto" });
                 } else {
-                    gsap.to(item.el, {
-                        scale: item.baseScale,
-                        duration: 0.4,
-                        overwrite: "auto"
-                    });
+                    gsap.set(item.el, { scale: item.baseScale, overwrite: "auto" });
                 }
 
                 // Air friction

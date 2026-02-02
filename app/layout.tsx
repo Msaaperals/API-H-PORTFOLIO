@@ -51,6 +51,7 @@ export const viewport: Viewport = {
 };
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollProvider } from "@/components/scroll-provider";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 
 export default function RootLayout({
@@ -70,8 +71,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <WhatsAppButton />
+          <ScrollProvider>
+            {children}
+            <WhatsAppButton />
+          </ScrollProvider>
         </ThemeProvider>
         <Analytics />
       </body>
