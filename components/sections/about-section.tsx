@@ -8,7 +8,7 @@ import { FallingLeaves } from "@/components/ui/falling-leaves";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const isInView = useInView(sectionRef, { once: false, amount: 0.3, margin: "-100px" });
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -96,13 +96,16 @@ export function AboutSection() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <h3 className="text-2xl md:text-3xl font-bold text-foreground mt-4 leading-tight">
-                Environmental Specialist <br />
-                <span className="text-muted-foreground">& Digital Designer</span>
+              <h3 className="text-3xl md:text-4xl font-bold mt-4 leading-tight">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-white via-emerald-200 to-emerald-400">
+                  Environmental Specialist
+                </span>{" "}
+                <br />
+                <span className="text-emerald-400/90">& Digital Designer</span>
               </h3>
             </motion.div>
 
-            <motion.p variants={itemVariants} className="text-lg text-muted-foreground leading-relaxed max-w-xl">
+            <motion.p variants={itemVariants} className="text-lg text-zinc-200 leading-relaxed max-w-xl shadow-black drop-shadow-sm">
               A dedicated graduate with a Bachelor's in Environmental Sciences, aiming to leverage my academic background and practical experience to contribute effectively in a professional setting. Seeking a role that offers opportunities for growth and learning, particularly in teaching and management.
             </motion.p>
 
